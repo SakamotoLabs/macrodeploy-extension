@@ -1,0 +1,176 @@
+{
+  "name": "macrodeploy",
+  "displayName": "MacroDeploy",
+  "description": "AI code audits that run locally — on your own Claude credential.",
+  "version": "0.0.18",
+  "publisher": "sakamotolabs",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sakamotolabs/macrodeploy-extension"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "AI",
+    "Linters"
+  ],
+  "keywords": [
+    "claude",
+    "ai",
+    "audit",
+    "security",
+    "code review",
+    "agent"
+  ],
+  "main": "./dist/extension.js",
+  "icon": "media/icon.png",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "macrodeploy.auditWorkspace",
+        "title": "Code Audit",
+        "category": "MacroDeploy",
+        "icon": "media/icon.svg"
+      },
+      {
+        "command": "macrodeploy.connect",
+        "title": "Connect",
+        "category": "MacroDeploy",
+        "icon": "media/icon.svg"
+      },
+      {
+        "command": "macrodeploy.setup",
+        "title": "Set Up / Sign In",
+        "category": "MacroDeploy",
+        "icon": "$(gear)"
+      },
+      {
+        "command": "macrodeploy.resetOnboarding",
+        "title": "Reset Onboarding",
+        "category": "MacroDeploy",
+        "icon": "$(debug-restart)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "macrodeploy.auditWorkspace",
+          "group": "navigation@9",
+          "when": "workspaceFolderCount != 0"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "macrodeploy.auditWorkspace"
+        },
+        {
+          "command": "macrodeploy.connect"
+        },
+        {
+          "command": "macrodeploy.setup"
+        },
+        {
+          "command": "macrodeploy.resetOnboarding"
+        }
+      ]
+    },
+    "walkthroughs": [
+      {
+        "id": "macrodeploy.gettingStarted",
+        "title": "Get started with MacroDeploy",
+        "description": "Run code audits locally on your own Claude credential.",
+        "steps": [
+          {
+            "id": "install",
+            "title": "Install Claude Code",
+            "description": "MacroDeploy runs the Claude Code CLI locally.\n[Set Up / Sign In](command:macrodeploy.setup)",
+            "media": {
+              "markdown": "media/step-install.md"
+            }
+          },
+          {
+            "id": "credential",
+            "title": "Connect your account",
+            "description": "Sign in on macrodeploy.com in your browser — it creates your token and syncs your credential and preferences automatically.\n[Connect](command:macrodeploy.connect)",
+            "media": {
+              "markdown": "media/step-credential.md"
+            }
+          },
+          {
+            "id": "audit",
+            "title": "Run your first audit",
+            "description": "Open a repo and run a Code Audit.\n[Run Code Audit](command:macrodeploy.auditWorkspace)",
+            "media": {
+              "markdown": "media/step-audit.md"
+            }
+          }
+        ]
+      }
+    ],
+    "configuration": {
+      "title": "MacroDeploy",
+      "properties": {
+        "macrodeploy.credential": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "apiKey",
+            "subscription"
+          ],
+          "enumDescriptions": [
+            "Use the API key if saved, otherwise your Claude subscription login.",
+            "Always use the saved Anthropic API key.",
+            "Always use your Claude Pro/Max subscription."
+          ],
+          "default": "auto",
+          "description": "Which Anthropic credential to run on. Set credentials via the “MacroDeploy: Set Up” command — they're stored securely, not here."
+        },
+        "macrodeploy.theme": {
+          "type": "string",
+          "enum": [
+            "dark",
+            "light",
+            "auto"
+          ],
+          "enumDescriptions": [
+            "Dark panel (default).",
+            "Light panel.",
+            "Follow your editor's theme."
+          ],
+          "default": "dark",
+          "description": "Color theme for the audit panel."
+        },
+        "macrodeploy.workerModel": {
+          "type": "string",
+          "default": "claude-haiku-4-5-20251001",
+          "markdownDescription": "Model for the parallel audit subagents. Leave blank to use your Claude Code default."
+        },
+        "macrodeploy.synthModel": {
+          "type": "string",
+          "default": "claude-opus-4-8",
+          "markdownDescription": "Model for the synthesis pass. Leave blank to use your Claude Code default."
+        },
+        "macrodeploy.apiBaseUrl": {
+          "type": "string",
+          "default": "https://macrodeploy.com",
+          "description": "MacroDeploy backend used to fetch audit rubrics."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.4.0"
+  }
+}

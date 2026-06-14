@@ -1,0 +1,11 @@
+src/**
+node_modules/**
+.gitignore
+.vscode/**
+tsconfig.json
+release.sh
+.env
+.env.*
+**/*.map
+**/*.ts
+*.vsix

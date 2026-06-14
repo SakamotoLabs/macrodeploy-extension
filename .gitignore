@@ -1,0 +1,8 @@
+node_modules/
+dist/
+*.vsix
+*.log
+
+# Local secrets (marketplace PATs) — never commit
+.env
+.env.*
