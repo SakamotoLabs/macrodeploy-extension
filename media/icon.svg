@@ -1,7 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
-  <!-- MacroDeploy mark: a checkmark whose tip becomes an up-right arrow —
-       "tested AND shipped." White on the brand green. -->
-  <rect width="48" height="48" rx="11" fill="#16a34a"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="256" height="256" fill="none">
+  <rect width="48" height="48" rx="11" fill="#334155"/>
   <g fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
     <path d="M12 25 L21 34 L38 13"/>
     <path d="M30 13 L38 13 L38 21"/>

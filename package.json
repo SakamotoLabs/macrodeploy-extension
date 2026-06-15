@@ -1,8 +1,8 @@
 {
   "name": "macrodeploy",
   "displayName": "MacroDeploy",
-  "description": "AI code audits that run locally — on your own Claude credential.",
-  "version": "0.0.18",
+  "description": "AI code audits that run locally \u2014 on your own Claude credential.",
+  "version": "0.0.19",
   "publisher": "sakamotolabs",
   "license": "MIT",
   "repository": {
@@ -96,7 +96,7 @@
           {
             "id": "credential",
             "title": "Connect your account",
-            "description": "Sign in on macrodeploy.com in your browser — it creates your token and syncs your credential and preferences automatically.\n[Connect](command:macrodeploy.connect)",
+            "description": "Sign in on macrodeploy.com in your browser \u2014 it creates your token and syncs your credential and preferences automatically.\n[Connect](command:macrodeploy.connect)",
             "media": {
               "markdown": "media/step-credential.md"
             }
@@ -128,7 +128,7 @@
             "Always use your Claude Pro/Max subscription."
           ],
           "default": "auto",
-          "description": "Which Anthropic credential to run on. Set credentials via the “MacroDeploy: Set Up” command — they're stored securely, not here."
+          "description": "Which Anthropic credential to run on. Set credentials via the \u201cMacroDeploy: Set Up\u201d command \u2014 they're stored securely, not here."
         },
         "macrodeploy.theme": {
           "type": "string",
